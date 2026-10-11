@@ -1,0 +1,142 @@
+{
+ "lastUpdated": "2026-10-08T14:38:16.165Z",
+ "items": [
+  {
+   "partNumber": "B109479",
+   "displayName": "Compute - GPU - L40S",
+   "metricName": "GPU Per Hour",
+   "serviceCategory": "Compute - GPU",
+   "currencyCodeLocalizations": [
+    {
+     "currencyCode": "USD",
+     "prices": [
+      {
+       "model": "PAY_AS_YOU_GO",
+       "value": 3.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "partNumber": "B109480",
+   "displayName": "OCI - Compute - GPU - H100T",
+   "metricName": "GPU Per Hour",
+   "serviceCategory": "Compute - GPU - Other",
+   "currencyCodeLocalizations": [
+    {
+     "currencyCode": "USD",
+     "prices": [
+      {
+       "model": "PAY_AS_YOU_GO",
+       "value": 10.75
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "partNumber": "B110519",
+   "displayName": "OCI - Compute - GPU - H200",
+   "metricName": "GPU Per Hour",
+   "serviceCategory": "Compute - GPU",
+   "currencyCodeLocalizations": [
+    {
+     "currencyCode": "USD",
+     "prices": [
+      {
+       "model": "PAY_AS_YOU_GO",
+       "value": 10
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "partNumber": "B112613",
+   "displayName": "OCI - Compute - GPU - RTX PRO 6000",
+   "metricName": "GPU Per Hour",
+   "serviceCategory": "Compute - GPU",
+   "currencyCodeLocalizations": [
+    {
+     "currencyCode": "USD",
+     "prices": [
+      {
+       "model": "PAY_AS_YOU_GO",
+       "value": 4.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "partNumber": "B92740",
+   "displayName": "Compute - GPU - E3",
+   "metricName": "GPU Per Hour",
+   "serviceCategory": "Compute - GPU",
+   "currencyCodeLocalizations": [
+    {
+     "currencyCode": "USD",
+     "prices": [
+      {
+       "model": "PAY_AS_YOU_GO",
+       "value": 3.05
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "partNumber": "B93544",
+   "displayName": "OCI - Compute - GPU - E4",
+   "metricName": "GPU Per Hour",
+   "serviceCategory": "Compute - GPU",
+   "currencyCodeLocalizations": [
+    {
+     "currencyCode": "USD",
+     "prices": [
+      {
+       "model": "PAY_AS_YOU_GO",
+       "value": 3.05
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "partNumber": "B95907",
+   "displayName": "Compute - GPU - A100 - v2",
+   "metricName": "GPU Per Hour",
+   "serviceCategory": "Compute - GPU",
+   "currencyCodeLocalizations": [
+    {
+     "currencyCode": "USD",
+     "prices": [
+      {
+       "model": "PAY_AS_YOU_GO",
+       "value": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "partNumber": "B98415",
+   "displayName": "Oracle Cloud Infrastructure - Compute - GPU - H100",
+   "description": "Oracle Cloud Infrastructure (OCI) Compute provides bare metal and virtual machine instances powered by NVIDIA GPUs for a variety of use cases, including mainstream graphics and videos as well as the most demanding AI training and HPC workloads. OCI excels at both training time and cost because of its ultralow latency and near line-rate network performance.",
+   "metricName": "GPU Per Hour",
+   "serviceCategory": "Compute - GPU",
+   "currencyCodeLocalizations": [
+    {
+     "currencyCode": "USD",
+     "prices": [
+      {
+       "model": "PAY_AS_YOU_GO",
+       "value": 10
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
