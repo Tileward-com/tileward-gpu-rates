@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "gpus": [
+    {"id": "l4", "name": "NVIDIA L4", "gb": 24},
+    {"id": "a100-40", "name": "NVIDIA A100", "gb": 40},
+    {"id": "l40s", "name": "NVIDIA L40S", "gb": 48},
+    {"id": "a100-80", "name": "NVIDIA A100", "gb": 80},
+    {"id": "h100", "name": "NVIDIA H100", "gb": 80},
+    {"id": "rtx-pro-6000", "name": "NVIDIA RTX PRO 6000 Blackwell", "gb": 96},
+    {"id": "h200", "name": "NVIDIA H200", "gb": 141}
+  ],
+  "providers": [
+    {"id": "aws", "name": "AWS"},
+    {"id": "gcp", "name": "Google Cloud"},
+    {"id": "azure", "name": "Azure"},
+    {"id": "oci", "name": "Oracle Cloud"},
+    {"id": "coreweave", "name": "CoreWeave"},
+    {"id": "lambda", "name": "Lambda"}
+  ],
+  "rates": [
+    {"gpu": "l4", "provider": "aws", "usd": 0.8, "basis": "g6.xlarge, us-east-1"},
+    {"gpu": "l4", "provider": "gcp", "usd": 0.71, "basis": "g2-standard-4, us-central1"},
+    {"gpu": "a100-40", "provider": "aws", "usd": 2.74, "basis": "p4d.24xlarge ÷ 8 GPUs, us-east-1"},
+    {"gpu": "a100-40", "provider": "gcp", "usd": 3.67, "basis": "a2-highgpu-1g, us-central1"},
+    {"gpu": "a100-40", "provider": "azure", "usd": 3.4, "basis": "ND96asr_A100_v4 ÷ 8 GPUs, eastus"},
+    {"gpu": "a100-40", "provider": "oci", "usd": 3.05, "basis": "BM.GPU4.8 ÷ 8 GPUs"},
+    {"gpu": "a100-40", "provider": "lambda", "usd": 1.99, "basis": "1× A100 40 GB, per GPU"},
+    {"gpu": "l40s", "provider": "aws", "usd": 1.86, "basis": "g6e.xlarge, us-east-1"},
+    {"gpu": "l40s", "provider": "oci", "usd": 3.5, "basis": "BM.GPU.L40S.4 ÷ 4 GPUs"},
+    {"gpu": "l40s", "provider": "coreweave", "usd": 2.25, "basis": "L40S ÷ 8 GPUs, North America"},
+    {"gpu": "a100-80", "provider": "aws", "usd": 3.43, "basis": "p4de.24xlarge ÷ 8 GPUs, us-east-1"},
+    {"gpu": "a100-80", "provider": "gcp", "usd": 5.07, "basis": "a2-ultragpu-1g, us-central1"},
+    {"gpu": "a100-80", "provider": "azure", "usd": 3.67, "basis": "Standard_NC24ads_A100_v4, eastus"},
+    {"gpu": "a100-80", "provider": "oci", "usd": 4.0, "basis": "BM.GPU.A100-v2.8 ÷ 8 GPUs"},
+    {"gpu": "a100-80", "provider": "coreweave", "usd": 2.7, "basis": "A100 ÷ 8 GPUs, North America"},
+    {"gpu": "a100-80", "provider": "lambda", "usd": 2.79, "basis": "8× A100 SXM 80 GB, per GPU"},
+    {"gpu": "h100", "provider": "aws", "usd": 6.88, "basis": "p5.48xlarge ÷ 8 GPUs, us-east-1"},
+    {"gpu": "h100", "provider": "gcp", "usd": 11.06, "basis": "a3-highgpu-8g ÷ 8 GPUs, us-central1"},
+    {"gpu": "h100", "provider": "azure", "usd": 12.29, "basis": "Standard_ND96isr_H100_v5 ÷ 8 GPUs, eastus"},
+    {"gpu": "h100", "provider": "oci", "usd": 10.0, "basis": "BM.GPU.H100.8 ÷ 8 GPUs"},
+    {"gpu": "h100", "provider": "coreweave", "usd": 6.16, "basis": "HGX H100 ÷ 8 GPUs, North America"},
+    {"gpu": "h100", "provider": "lambda", "usd": 3.99, "basis": "8× H100 SXM 80 GB, per GPU"},
+    {"gpu": "rtx-pro-6000", "provider": "aws", "usd": 3.36, "basis": "g7e.2xlarge, us-east-1"},
+    {"gpu": "rtx-pro-6000", "provider": "gcp", "usd": 4.5, "basis": "g4-standard-48, us-central1"},
+    {"gpu": "rtx-pro-6000", "provider": "azure", "usd": 5.5, "basis": "Standard_NC144lds_xl_RTXPRO6000BSE_v6, westus2"},
+    {"gpu": "rtx-pro-6000", "provider": "oci", "usd": 4.5, "basis": "BM.GPU.RTXPRO.8 ÷ 8 GPUs"},
+    {"gpu": "rtx-pro-6000", "provider": "coreweave", "usd": 2.5, "basis": "RTX PRO 6000 Blackwell Server Edition ÷ 8 GPUs, North America"},
+    {"gpu": "h200", "provider": "aws", "usd": 7.91, "basis": "p5en.48xlarge ÷ 8 GPUs, us-east-1"},
+    {"gpu": "h200", "provider": "azure", "usd": 10.6, "basis": "Standard_ND96isr_H200_v5 ÷ 8 GPUs, eastus2"},
+    {"gpu": "h200", "provider": "oci", "usd": 10.0, "basis": "BM.GPU.H200.8 ÷ 8 GPUs"},
+    {"gpu": "h200", "provider": "coreweave", "usd": 6.31, "basis": "HGX H200 ÷ 8 GPUs, North America"}
+  ]
+}

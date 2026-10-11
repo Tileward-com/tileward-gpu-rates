@@ -1,0 +1,17 @@
+name: validate
+# A merge to main publishes: tileward.com serves gpu-rates.json from here. So the gate runs on every
+# pull request, and a branch rule should require this check before merging.
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test test/*.test.mjs
+      - run: node validate.mjs gpu-rates.json
