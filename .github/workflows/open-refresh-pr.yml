@@ -1,0 +1,60 @@
+name: open-refresh-pr
+# The weekly refresh job pushes a branch named refresh/box-<date> and nothing more: it holds a deploy key
+# and no API token. This opens the pull request from that branch, labelled gpu-rates, with the diff table as
+# its body. A person merging that pull request is the approval; nothing here merges.
+#
+# It refuses a branch that changes anything but gpu-rates.json, so a refresh can only ever be a price change.
+on:
+  push:
+    branches: ['refresh/box-*']
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: open-refresh-pr
+  cancel-in-progress: false
+
+jobs:
+  open:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test test/*.test.mjs
+      - run: node validate.mjs gpu-rates.json
+      - name: Open or update the pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          changed=$(git diff --name-only "origin/main...HEAD")
+          if [ "$changed" != "gpu-rates.json" ]; then
+            echo "::error::a refresh may change gpu-rates.json and nothing else; this branch changes: ${changed:-nothing}"
+            exit 1
+          fi
+          git show origin/main:gpu-rates.json > "$RUNNER_TEMP/main.json"
+          # The last run's report rides on the heartbeat branch; it only adds the text read at the source.
+          git show origin/agent-heartbeat:report.json > "$RUNNER_TEMP/report.json" 2>/dev/null || echo '{}' > "$RUNNER_TEMP/report.json"
+          node refresh/pr-body.mjs --old "$RUNNER_TEMP/main.json" --new gpu-rates.json --report "$RUNNER_TEMP/report.json" --title > "$RUNNER_TEMP/title.txt"
+          node refresh/pr-body.mjs --old "$RUNNER_TEMP/main.json" --new gpu-rates.json --report "$RUNNER_TEMP/report.json" --body > "$RUNNER_TEMP/body.md"
+          existing=$(gh pr list --head "$BRANCH" --state open --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            gh pr edit "$existing" --title "$(cat "$RUNNER_TEMP/title.txt")" --body-file "$RUNNER_TEMP/body.md"
+            number=$existing
+          else
+            url=$(gh pr create --base main --head "$BRANCH" --title "$(cat "$RUNNER_TEMP/title.txt")" --body-file "$RUNNER_TEMP/body.md" --label gpu-rates)
+            number=${url##*/}
+          fi
+          echo "pull request #$number"
+          # One refresh pull request at a time: an older one is superseded by this.
+          for old in $(gh pr list --state open --label gpu-rates --json number,headRefName \
+              --jq ".[] | select(.number != $number and (.headRefName | startswith(\"refresh/box-\"))) | .number"); do
+            gh pr close "$old" --delete-branch --comment "Superseded by #$number."
+          done

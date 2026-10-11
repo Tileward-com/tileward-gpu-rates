@@ -1,10 +1,12 @@
 name: validate
 # A merge to main publishes: tileward.com serves gpu-rates.json from here. So the gate runs on every
-# pull request, and a branch rule should require this check before merging.
+# pull request, and a branch rule should require this check before merging. It also runs on the refresh
+# job's pushed branches: the pull request opened from one by a workflow does not start workflows of its
+# own, so this run is the check the branch rule finds.
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, 'refresh/box-*']
 jobs:
   validate:
     runs-on: ubuntu-latest

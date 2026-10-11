@@ -4,6 +4,7 @@
   "description": "Provider list prices per GPU-hour that the tileward.com Models calculator reads.",
   "scripts": {
     "test": "node --test test/*.test.mjs",
-    "validate": "node validate.mjs gpu-rates.json"
+    "validate": "node validate.mjs gpu-rates.json",
+    "refresh": "node refresh/run.mjs"
   }
 }
